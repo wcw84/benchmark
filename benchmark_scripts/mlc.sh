@@ -1,7 +1,10 @@
 #!/bin/bash
+# arm架构无法支持
+
+source ./config.sh
 
 echo "############run $0#############"
-workDir=/hh-test/mlc
+workDir=$workDirRoot/mlc
 mkdir -p $workDir
 cd $workDir
 

@@ -1,6 +1,8 @@
 #!/bin/bash
+source ./config.sh
 
-workDir=/hh-test/unix_bench
+echo "############run $0#############"
+workDir=$workDirRoot/unix_bench
 mkdir -p $workDir
 cd $workDir
 
@@ -17,6 +19,7 @@ install() {
 run_singlecore_test() {
 	echo "run_singlecore_test..."
 	cd $workDir/$pkg/UnixBench
+	echo ./Run -c 1 
 	./Run -c 1 >> $workDir/singlecore_test.log
 }
 
@@ -24,11 +27,12 @@ run_multicore_test() {
 	echo "run_multicore_test..."
 	cd $workDir/$pkg/UnixBench
 	n=$(cat /proc/cpuinfo | grep process | wc -l)
+	echo ./Run -c $n 
 	./Run -c $n >> $workDir/multicore_test.log
 }
 
 # install dependency
-yum -y install make automake gcc autoconf gcc-c++ time perl-Time-HiRes
+sudo yum -y install make automake gcc autoconf gcc-c++ time perl-Time-HiRes
 if [[ ! -e $pkg/UnixBench/Run ]];
 then
 	install

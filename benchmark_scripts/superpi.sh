@@ -1,7 +1,8 @@
 #!/bin/bash
+source ./config.sh
 
 echo "############run $0#############"
-workDir=/hh-test/superpi
+workDir=$workDirRoot/superpi
 mkdir -p $workDir
 cd $workDir
 s=5000

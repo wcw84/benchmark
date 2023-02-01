@@ -1,7 +1,9 @@
 #!/bin/bash
 
+source ./config.sh
+
 echo "############run $0#############"
-workDir=/hh-test/netperf
+workDir=$workDirRoot/netperf
 mkdir -p $workDir
 cd $workDir
 
