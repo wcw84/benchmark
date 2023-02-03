@@ -4,7 +4,13 @@
 source ./config.sh
 
 echo "############run $0#############"
-workDir=$workDirRoot/steam
+arch=$(uname -i)
+if [[ $arch == 'aarch64' ]]; then
+	echo "stream doesn't support $arch, exit"
+	exit 1
+fi
+
+workDir=$workDirRoot/stream
 mkdir -p $workDir
 cd $workDir
 
@@ -18,4 +24,4 @@ array_size=$((available_memory_size/8/3))
 # 编译 stream
 gcc -O stream.c -fopenmp -DSTREAM_ARRAY_SIZE=$array_size -DNTIME=30 -mcmodel=large -o stream.o
 # 执行测试
-./stream.o > steam.log
+./stream.o > stream.log

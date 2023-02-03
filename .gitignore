@@ -1,3 +1,4 @@
 *.log
+*.cer
 config/*
 .DS_Store

@@ -6,6 +6,8 @@ echo "############run $0#############"
 # mkdir -p $workDir
 # cd $workDir
 server_ip=$1
+totalNum=$2
+concurrency=$3
 
 install_ab() {
 	which ab >/dev/null
@@ -20,10 +22,11 @@ install_ab() {
 
 run_client() {
 	url=http://${server_ip}/
-	totalNum=200000
-	concurrency=10000
+	# totalNum=200000
+	# concurrency=10000
 
-	ab -n $totalNum -c $concurrency $url
+	echo "ab -n $totalNum -c $concurrency -s 30 $url" 
+	ab -n $totalNum -c $concurrency -s 30 $url
 }
 
 

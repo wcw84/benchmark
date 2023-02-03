@@ -24,6 +24,3 @@ do
    nohup bash $script $ip $user $cer $dev>$ip.log 2>&1 &
 done < $f
 
-test_nginx() {
-   
-}

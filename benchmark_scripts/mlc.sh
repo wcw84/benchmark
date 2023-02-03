@@ -4,6 +4,12 @@
 source ./config.sh
 
 echo "############run $0#############"
+arch=$(uname -i)
+if [[ $arch == 'aarch64' ]]; then
+	echo "MLC doesn't support $arch, exit"
+	exit 1
+fi
+
 workDir=$workDirRoot/mlc
 mkdir -p $workDir
 cd $workDir
