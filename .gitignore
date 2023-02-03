@@ -1,4 +1,5 @@
 *.log
 *.cer
+ec2-list.txt
 config/*
 .DS_Store
